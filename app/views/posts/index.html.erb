@@ -1,35 +1,36 @@
-<h1>Posts#index</h1>
-
-<form action="/posts/create" id="create_posts">
-    <div class="container">
-        <div class="form-group">
-            <input type="text" name="title" placeholder="Título" class="form-control">
-            <input type="text" name="image" placeholder="url imagen" class="form-control">
-            <textarea name="content" cols="30" rows="10" class="form-control"></textarea>
-        </div>
-        <input type="submit" value="Crear Post" class="btn btn-primary">
+<div class="container justify-self-center col-md-6">
+  <div>
+    <h1>Publicaciones</h1>
+  </div>
+  <form action="/posts/create" id="create_posts">
+    <div class="form-group">
+      <input type="text" name="title" placeholder="Título" class="form-control my-1">
+      <input type="text" name="image" placeholder="url imagen" class="form-control my-1">
+      <textarea name="content" cols="30" rows="10" class="form-control my-1"  placeholder="descripción"></textarea>
     </div>
-</form>
+    <input type="submit" value="Publicar" class="btn btn-success justify-self-right">
+  </form>
+</div>
 
+<div class="container mt-3">
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Image</th>
-      <th scope="col">Content</th>
-      <th scope="col">Created At</th>
+      <th scope="col">Título</th>
+      <th scope="col">Fecha creación</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Descripción</th>
     </tr>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
     <tr>
-      <th scope="row"><%= post.id %></th>
       <td><%= post.title %></td>
+      <td><%= post.created_at.strftime("%F") %></td>
       <td><%= image_tag post.image, height: '80' %></td>
       <td><%= post.content %></td>
-      <td><%= post.created_at %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+</div>
